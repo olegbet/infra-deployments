@@ -4,4 +4,4 @@
   value: https://github.com/olegbet/infra-deployments.git
 - op: replace
   path: /spec/template/spec/sources/1/targetRevision
-  value: preview-KONFLUX-8225_add_log_forwarder_for_loki
+  value: preview-preview-KONFLUX-8225_add_log_forwarder_for_loki
