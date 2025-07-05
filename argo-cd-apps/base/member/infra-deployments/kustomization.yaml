@@ -31,7 +31,7 @@ resources:
   - konflux-rbac
   - konflux-info
   - vector-kubearchive-log-collector
-  - vector-tekton-logs-collector
+ # - vector-tekton-logs-collector
   - kyverno
   - namespace-lister
   - pulp-access-controller
