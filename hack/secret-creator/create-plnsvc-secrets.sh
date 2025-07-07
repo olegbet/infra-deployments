@@ -115,6 +115,9 @@ create_db_cert_secret_and_configmap() {
 
 create_kubearchive_loki_secret() {
     NAMESPACE=product-kubearchive-logging
+
+    oc adm policy add-scc-to-user hostaccess -z default -n product-kubearchive-logging
+    oc adm policy add-scc-to-user hostaccess -z vector-kubearchive-log-collector -n product-kubearchive-logging
     echo "Creating Loki secret" >&2
     LOKI_USERNAME=admin
     LOKI_PWD="$(openssl rand -base64 20)"
