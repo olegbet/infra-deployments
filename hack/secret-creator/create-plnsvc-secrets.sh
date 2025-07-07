@@ -118,6 +118,8 @@ create_kubearchive_loki_secret() {
 
     oc adm policy add-scc-to-user hostaccess -z default -n product-kubearchive-logging
     oc adm policy add-scc-to-user hostaccess -z vector-kubearchive-log-collector -n product-kubearchive-logging
+    oc adm policy add-scc-to-user hostmount-anyuid -z vector-kubearchive-log-collector -n product-kubearchive-logging
+    oc adm policy add-scc-to-user privileged -z vector-kubearchive-log-collector -n product-kubearchive-logging
     echo "Creating Loki secret" >&2
     LOKI_USERNAME=admin
     LOKI_PWD="$(openssl rand -base64 20)"
