@@ -171,7 +171,7 @@ image:
   repository: quay.io/kubearchive/vector
   tag: 0.46.1-distroless-libc
 serviceAccount:
-  create: false
+  create: true
   name: vector-kubearchive-log-collector
 securityContext:
   allowPrivilegeEscalation: false
