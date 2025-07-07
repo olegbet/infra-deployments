@@ -5,11 +5,9 @@ main() {
     create_namespace tekton-results
     create_namespace tekton-logging
     create_namespace product-kubearchive-logging
-    oc adm policy add-scc-to-user hostaccess -z default -n product-kubearchive-logging
-    oc adm policy add-scc-to-user hostaccess -z deployer -n product-kubearchive-logging
-    #create_db_secret
-    #create_s3_secret tekton-results tekton-results-s3
-    #create_s3_secret tekton-logging tekton-results-s3
+    create_db_secret
+    create_s3_secret tekton-results tekton-results-s3
+    create_s3_secret tekton-logging tekton-results-s3
 
     create_db_cert_secret_and_configmap
 }
