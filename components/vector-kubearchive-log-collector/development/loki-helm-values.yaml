@@ -1,5 +1,11 @@
 ---
 loki:
+  # Explicit image configuration to fix ErrImagePull - using Docker Hub registry
+  image:
+    repository: docker.io/grafana/loki
+    tag: "3.3.0"
+    pullPolicy: IfNotPresent
+  
   limits_config:
     max_query_length: 0
   auth_enabled: false  # Keep simple for development but with basic auth
@@ -40,6 +46,11 @@ deploymentMode: SingleBinary
 gateway:
   enabled: true
   replicas: 1
+  # Explicit gateway image configuration - using Docker Hub registry
+  image:
+    repository: docker.io/nginx
+    tag: "1.24-alpine"
+    pullPolicy: IfNotPresent
   nginxConfig:
     resolver: dns-default.openshift-dns.svc.cluster.local
 
@@ -118,6 +129,11 @@ chunksCache:
 resultsCache:
   enabled: true
   allocatedMemory: 256  # Keep results cache but with minimal memory
+  # Explicit image for results cache - using Docker Hub registry
+  image:
+    repository: docker.io/memcached
+    tag: "1.6.24-alpine"
+    pullPolicy: IfNotPresent
 
 # Disable test pods for cleaner development environment  
 test:
