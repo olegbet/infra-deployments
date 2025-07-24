@@ -1,6 +1,10 @@
 # Copyright KubeArchive Authors
 # SPDX-License-Identifier: Apache-2.0
 ---
+# Admin user configuration  
+adminUser: admin
+adminPassword: devpassword  # Simple password for development
+
 # OpenShift-compatible security context using assigned UID range
 securityContext:
   runAsNonRoot: true
@@ -23,6 +27,11 @@ containerSecurityContext:
   runAsNonRoot: true
   runAsUser: 1000770000
   runAsGroup: 1000770000
+
+# Service account configuration
+serviceAccount:
+  create: false
+  name: vector-kubearchive-log-collector-grafana
 
 # Disable test pod for development environment
 testFramework:
