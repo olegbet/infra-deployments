@@ -43,6 +43,32 @@ gateway:
   nginxConfig:
     resolver: dns-default.openshift-dns.svc.cluster.local
 
+# Configure ServiceAccount for Loki
+serviceAccount:
+  create: false  # We create it manually in loki-pre.yaml
+  name: loki-sa
+
+# OpenShift-compatible security context
+securityContext:
+  runAsNonRoot: false  # Allow running as root for loki
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: false
+
+podSecurityContext:
+  runAsNonRoot: false  # Allow running as root for loki
+  allowPrivilegeEscalation: false
+
+containerSecurityContext:
+  runAsNonRoot: false  # Allow running as root for loki
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: false
+
 singleBinary:
   replicas: 1
   persistence:

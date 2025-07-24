@@ -52,6 +52,7 @@ users:
 - system:serviceaccount:product-kubearchive-logging:loki
 - system:serviceaccount:product-kubearchive-logging:loki-sa
 - system:serviceaccount:product-kubearchive-logging:vector-kubearchive-log-collector-grafana
+- system:serviceaccount:product-kubearchive-logging:vector-kubearchive-log-collector-loki
 volumes:
 - configMap
 - emptyDir
@@ -88,6 +89,18 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: vector-kubearchive-log-collector
+  namespace: product-kubearchive-logging
+- kind: ServiceAccount
+  name: loki
+  namespace: product-kubearchive-logging
+- kind: ServiceAccount
+  name: loki-sa
+  namespace: product-kubearchive-logging
+- kind: ServiceAccount
+  name: vector-kubearchive-log-collector-grafana
+  namespace: product-kubearchive-logging
+- kind: ServiceAccount
+  name: vector-kubearchive-log-collector-loki
   namespace: product-kubearchive-logging
 ---
 apiVersion: v1
