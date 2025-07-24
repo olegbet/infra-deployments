@@ -76,6 +76,10 @@ containerSecurityContext:
       - ALL
   readOnlyRootFilesystem: false
 
+# Disable canary to avoid SCC issues for now
+lokiCanary:
+  enabled: false
+
 singleBinary:
   replicas: 1
   persistence:
